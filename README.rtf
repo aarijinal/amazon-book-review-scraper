@@ -1,0 +1,162 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Arial-BoldMT;\f1\froman\fcharset0 Times-Roman;\f2\fswiss\fcharset0 ArialMT;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red16\green60\blue192;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c6667\c33333\c80000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Acquisition and Preprocessing of Book Data
+\f1\b0\fs24 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 -- Project Status: [Completed]
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 \ul \ulc0 Introduction
+\f1\b0\fs24 \ulnone \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 This project utilizes web scraping to collect data from amazon.com on best selling books.\'a0 The web_scraper.py script cycles through books and creates two directories- one directory containing a parent table that has book information and another directory hosting child tables with review data for each book in the parent table. The parent table\'a0 has the following features:
+\f1\fs24 \
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f2\fs29\fsmilli14667 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \'a0ID - The book ID\'a0\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Title -\'a0 The title of the book\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Authors - The author of the book\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Price - The selling cost of the book on amazon.com\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Ratings - The total star rating (out of 5)\'a0 of the book\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Num_reviews - The number of ratings that contributed to the final rating of the book\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 The child tables have the following features:
+\f1\fs24 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\f2\fs29\fsmilli14667 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ID - number of review in queue\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Book_ID - ID corresponding to the book ID in the parent table\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Title - title given to review by the reviewer\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Location - location of the reviewer\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Reviewed_on - date the review was written\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Rating - number of stars (out of 5) the reviewer assigned to the book\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Body - content of the review\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Num_helpful_votes - the number of people who found the review helpful\'a0\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 The final dataset hosts a parent table limited to 200 books and review tables with a max of 500 reviews for each book.\'a0
+\f1\fs24 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 \ul \ulc0 How To Use It
+\f1\b0\fs24 \ulnone \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 The script can be run in the command line by calling web_scraper.py in the command line or from any IDE that runs python3.\'a0 The variables max_num_books and max_num_reviews (currently set to 200 and 500 respectively) can be adjusted to collect a larger sample of books and reviews than the script currently allows.\'a0\'a0
+\f1\fs24 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 \ul \ulc0 Requirements
+\f1\b0\fs24 \ulnone \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 The script is run using Python3 and requires the installation of the selenium and webdriver_manager python packages. Both packages can be installed using pip install in the command line.\'a0\'a0
+\f1\fs24 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 \ul \ulc0 Challenges/Limitations
+\f1\b0\fs24 \ulnone \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 Captchas
+\f2\b0 : 
+\f0\b \'a0
+\f2\b0 The speed at which the scraper cycles through page links could trigger amazon to issue a captcha to test if a bot is on the page.\'a0\'a0
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 \'a0
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 Time
+\f2\b0 : The script currently takes 4 hours to run, collecting 200 books and 500 reviews for each book. Any increase in the numbers collected will result in an increase in the runtime of the code.
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 \'a0\'a0
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 Inconsistent HTML: 
+\f2\b0 HTML tags representing similar elements change across pages\'a0
+\f1\fs24 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 \ul \ulc0 Future Improvements
+\f1\b0\fs24 \ulnone \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 The efficiency of the script can be improved. Calculations can be done to minimize the total runtime of the script by adjusting the sleep periods between requests.\'a0\'a0
+\f1\fs24 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf0 \ul \ulc0 Documentation
+\f1\b0\fs24 \ulnone \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 The documentation for selenium used in this project can be found here:
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://selenium-python.readthedocs.io/"}}{\fldrslt 
+\f2\fs29\fsmilli14667 \cf3 \ul \ulc3 \strokec3 https://selenium-python.readthedocs.io/}}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs29\fsmilli14667 \cf0 The documentation for webdriver_manager can be found here:
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://pypi.org/project/webdriver-manager/"}}{\fldrslt 
+\f2\fs29\fsmilli14667 \cf3 \ul \ulc3 \strokec3 https://pypi.org/project/webdriver-manager/}}\
+\
+\
+}
