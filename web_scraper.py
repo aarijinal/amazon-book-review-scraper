@@ -2,6 +2,7 @@ import re
 import csv
 import os
 import time
+from argparse import ArgumentParser
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -397,8 +398,24 @@ if __name__ == '__main__':
     if not os.path.exists(reviews_dir):
         os.mkdir(reviews_dir)
 
-    max_num_books = 200
-    max_num_reviews = 500
+    parser = ArgumentParser()
+    parser.add_argument("-nb", 
+                        "--num-books", 
+                        dest="num_books", 
+                        help="Maximum number of books to scrape (default: 200)",
+                        type=int,
+                        default=200)
+    parser.add_argument("-nr", 
+                        "--num-reviews", 
+                        dest="num_reviews", 
+                        help="Maximum number of reviews to scrape for each book (default: 500)",
+                        type=int,
+                        default=500)
+
+    args = parser.parse_args()
+
+    max_num_books = args.num_books
+    max_num_reviews = args.num_reviews
 
     books, book_reviews = crawler.get_books_and_reviews(max_num_books, max_num_reviews)
     while crawler.has_next_book_page() and len(books) < max_num_books:
